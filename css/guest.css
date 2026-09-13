@@ -1,0 +1,1355 @@
+@import url("common.css");
+@import url("animation.css");
+
+html {
+    scrollbar-width: none !important;
+    -ms-overflow-style: none !important;
+}
+
+.with-scrollbar {
+    scrollbar-width: auto !important;
+    -ms-overflow-style: auto !important;
+}
+
+.font-esthetic {
+    font-family: 'Dancing Script', cursive !important;
+}
+
+.img-center-crop {
+    width: 13rem;
+    height: 13rem;
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: cover;
+}
+
+html[data-bs-theme="dark"] .btn-transparent {
+    background-color: rgba(var(--bs-dark-rgb), 0.5) !important;
+    backdrop-filter: blur(0.5rem);
+}
+
+html[data-bs-theme="light"] .btn-transparent {
+    background-color: rgba(var(--bs-light-rgb), 0.5) !important;
+    backdrop-filter: blur(0.5rem);
+}
+
+.loading-page {
+    position: fixed;
+    inset: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 1056;
+}
+
+html[data-bs-theme="light"] .color-theme-svg {
+    color: rgb(255, 255, 255);
+    background-color: var(--bs-light);
+}
+
+html[data-bs-theme="dark"] .color-theme-svg {
+    color: rgb(0, 0, 0);
+    background-color: var(--bs-dark);
+}
+
+html[data-bs-theme="light"] .bg-light-dark {
+    background-color: rgb(var(--bs-light-rgb));
+}
+
+html[data-bs-theme="dark"] .bg-light-dark {
+    background-color: rgb(var(--bs-dark-rgb));
+}
+
+html[data-bs-theme="light"] .bg-white-black {
+    background-color: rgb(var(--bs-white-rgb));
+}
+
+html[data-bs-theme="dark"] .bg-white-black {
+    background-color: rgb(var(--bs-black-rgb));
+}
+
+.bg-cover-home {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    mask-image: linear-gradient(0.5turn, transparent, black 40%, black 60%, transparent);
+}
+
+.width-loading {
+    width: 25%;
+}
+
+.cursor-pointer {
+    cursor: pointer;
+}
+
+@media screen and (max-width: 992px) {
+    .width-loading {
+        width: 50%;
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .width-loading {
+        width: 75%;
+    }
+}
+
+svg {
+    display: block;
+    line-height: 0;
+    shape-rendering: geometricPrecision;
+    backface-visibility: hidden;
+}
+
+.svg-wrapper {
+    overflow: hidden !important;
+    transform: translateZ(0) !important;
+}
+
+.no-gap-bottom {
+    margin-bottom: -0.75rem !important;
+}
+/* ══════════════════════════════════════════════
+   HIỆU ỨNG VÀNG ÁNH KIM — Trang mở thiệp
+   ══════════════════════════════════════════════ */
+
+/* Chữ vàng đồng / champagne.
+   Điểm sáng nhất là #d4b158 — vẫn đủ đậm để không bao giờ
+   biến mất trên nền trắng (khác với #fff8dc gần trắng trước đây). */
+.text-gold {
+    background: linear-gradient(100deg,
+            #7d6220 0%,
+            #8a6d1f 16%,
+            #b08d2e 34%,
+            #d4b158 47%,
+            #b08d2e 60%,
+            #8a6d1f 78%,
+            #7d6220 100%);
+    background-size: 200% auto;
+    -webkit-background-clip: text;
+    background-clip: text;
+    -webkit-text-fill-color: transparent;
+    color: #a5842b;
+    animation: gold-shine 9s ease-in-out infinite;
+    letter-spacing: 0.06em;
+}
+
+@keyframes gold-shine {
+    0%, 100% {
+        background-position: 0% center;
+    }
+    50% {
+        background-position: 100% center;
+    }
+}
+
+/* Dòng chữ nhỏ "Save our Date" */
+.text-gold-label {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.78rem;
+    font-weight: 400;
+    letter-spacing: 0.42em;
+    text-indent: 0.42em;
+    text-transform: uppercase;
+    color: #8a6d1f;
+    margin: 0;
+    position: relative;
+    display: inline-block;
+    padding-bottom: 0.85rem;
+}
+
+/* Gạch chân mảnh có chấm kim cương ở giữa */
+.text-gold-label::after {
+    content: '';
+    position: absolute;
+    bottom: 0.3rem;
+    left: 50%;
+    transform: translateX(-50%);
+    width: 4.5rem;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            #a5842b 30%,
+            #c2a04a 50%,
+            #a5842b 70%,
+            transparent);
+}
+
+/* Viền ảnh mạ vàng */
+.border-gold {
+    border: 3px solid transparent !important;
+    background:
+        linear-gradient(var(--bs-body-bg, #fff), var(--bs-body-bg, #fff)) padding-box,
+        linear-gradient(135deg, #8a6d1f, #d4b158 30%, #7d6220 55%, #d4b158 80%, #8a6d1f) border-box;
+    box-shadow: 0 6px 22px rgba(125, 98, 32, 0.28) !important;
+}
+
+/* Chế độ tối: vàng sáng hơn cho dễ đọc */
+[data-bs-theme="dark"] .text-gold-label {
+    color: #c2a04a;
+}
+
+/* Giảm chuyển động nếu người dùng bật tiết kiệm hiệu ứng */
+@media (prefers-reduced-motion: reduce) {
+    .text-gold {
+        animation: none;
+        background-position: 50% center;
+    }
+}
+
+/* ══════════════════════════════════════════════
+   KHỐI TÊN TRÊN CỘT TRÁI (chế độ máy tính)
+   Nổi bật hẳn trên nền ảnh sáng
+   ══════════════════════════════════════════════ */
+.the-bang-bia {
+    /* Nền đục hơn hẳn + làm mờ ảnh phía sau để chữ bật lên */
+    background-color: rgba(255, 253, 250, 0.88);
+    backdrop-filter: blur(1.25rem) saturate(115%);
+    -webkit-backdrop-filter: blur(1.25rem) saturate(115%);
+    /* Viền vàng mảnh */
+    border: 1px solid rgba(138, 109, 31, 0.45);
+    /* Bóng đổ kép: tạo chiều sâu, tách khối khỏi nền */
+    box-shadow:
+        0 18px 48px rgba(76, 58, 12, 0.18),
+        0 2px 10px rgba(76, 58, 12, 0.10),
+        inset 0 1px 0 rgba(255, 255, 255, 0.85);
+    max-width: 30rem;
+}
+
+/* Dòng ngày cưới dưới tên */
+.chu-ngay-bia {
+    font-size: 0.95rem;
+    font-weight: 400;
+    letter-spacing: 0.02em;
+    color: #4a4034;
+    padding-top: 0.65rem;
+    border-top: 1px solid rgba(138, 109, 31, 0.32);
+    display: inline-block;
+}
+
+/* Chế độ tối */
+[data-bs-theme="dark"] .the-bang-bia {
+    background-color: rgba(28, 26, 22, 0.82);
+    border-color: rgba(196, 163, 76, 0.40);
+    box-shadow:
+        0 18px 48px rgba(0, 0, 0, 0.45),
+        inset 0 1px 0 rgba(255, 255, 255, 0.08);
+}
+
+[data-bs-theme="dark"] .chu-ngay-bia {
+    color: #e6ded2;
+    border-top-color: rgba(196, 163, 76, 0.30);
+}
+
+/* ══════════════════════════════════════════════
+   TÊN CẶP ĐÔI — không bao giờ ngắt giữa họ và tên
+   ══════════════════════════════════════════════ */
+.ten-cap-doi {
+    /* Cho phép xuống dòng, nhưng chỉ ở chỗ mình chỉ định (&) */
+    text-wrap: balance;
+    line-height: 1.25;
+}
+
+/* Mỗi vế tên là một khối không thể tách rời */
+.ten-cap-doi .ve-ten {
+    display: inline-block;
+    white-space: nowrap;
+}
+
+/* ══════════════════════════════════════════════
+   LỄ THÀNH HÔN — giờ lễ nổi bật
+   ══════════════════════════════════════════════ */
+.gio-le {
+    font-family: 'Dancing Script', cursive;
+    font-size: 3.25rem;
+    line-height: 1.1;
+    color: #8a6d1f;
+    letter-spacing: 0.02em;
+}
+
+.gio-don {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.95rem;
+    letter-spacing: 0.08em;
+    margin: 0 0.45rem;
+    vertical-align: middle;
+    opacity: 0.75;
+}
+
+.chu-am-lich {
+    font-size: 0.85rem;
+    font-style: italic;
+    opacity: 0.75;
+}
+
+/* ══════════════════════════════════════════════
+   BẢNG LỊCH TRÌNH TRONG NGÀY
+   ══════════════════════════════════════════════ */
+.bang-lich-trinh {
+    max-width: 26rem;
+    background-color: rgba(255, 252, 246, 0.75);
+    border: 1px solid rgba(138, 109, 31, 0.28);
+    box-shadow: 0 6px 20px rgba(76, 58, 12, 0.09);
+    text-align: center;
+}
+
+.moc-lich-trinh {
+    display: flex;
+    align-items: baseline;
+    gap: 0.9rem;
+    padding: 0.7rem 0;
+    text-align: left;
+    border-bottom: 1px dashed rgba(138, 109, 31, 0.22);
+}
+
+.moc-lich-trinh:last-child {
+    border-bottom: none;
+    padding-bottom: 0;
+}
+
+.moc-gio {
+    flex: 0 0 3.4rem;
+    font-weight: 600;
+    font-size: 0.95rem;
+    color: #8a6d1f;
+    font-variant-numeric: tabular-nums;
+}
+
+.moc-viec {
+    font-size: 0.92rem;
+    line-height: 1.45;
+}
+
+/* Mốc chính (Lễ Thành Hôn) — nhấn mạnh */
+.moc-chinh .moc-gio,
+.moc-chinh .moc-viec {
+    font-weight: 600;
+    color: #7d6220;
+}
+
+/* Chế độ tối */
+[data-bs-theme="dark"] .gio-le,
+[data-bs-theme="dark"] .moc-gio {
+    color: #c2a04a;
+}
+
+[data-bs-theme="dark"] .bang-lich-trinh {
+    background-color: rgba(32, 29, 24, 0.6);
+    border-color: rgba(196, 163, 76, 0.3);
+}
+
+[data-bs-theme="dark"] .moc-lich-trinh {
+    border-bottom-color: rgba(196, 163, 76, 0.2);
+}
+
+[data-bs-theme="dark"] .moc-chinh .moc-gio,
+[data-bs-theme="dark"] .moc-chinh .moc-viec {
+    color: #d4b158;
+}
+
+/* Đường phân cách giữa hai lễ */
+.ngan-cach-le {
+    width: 6rem;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(138, 109, 31, 0.45) 25%,
+            rgba(196, 163, 76, 0.75) 50%,
+            rgba(138, 109, 31, 0.45) 75%,
+            transparent);
+    position: relative;
+}
+
+/* Chấm kim cương nhỏ ở giữa đường kẻ */
+.ngan-cach-le::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.3rem;
+    height: 0.3rem;
+    background-color: #b08d2e;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+[data-bs-theme="dark"] .ngan-cach-le::after {
+    background-color: #c2a04a;
+}
+
+/* ══════════════════════════════════════════════
+   BẢNG MÀU TRANG PHỤC GỢI Ý
+   ══════════════════════════════════════════════ */
+.o-mau {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 0.4rem;
+}
+
+.cham-mau {
+    display: block;
+    width: 2.6rem;
+    height: 2.6rem;
+    border-radius: 50%;
+    border: 1px solid rgba(138, 109, 31, 0.35);
+    box-shadow: 0 3px 10px rgba(76, 58, 12, 0.16);
+}
+
+.ten-mau {
+    font-size: 0.78rem;
+    letter-spacing: 0.04em;
+    opacity: 0.85;
+}
+
+/* Mốc phụ trong lịch trình (địa điểm) */
+.moc-phu {
+    font-size: 0.82rem;
+    opacity: 0.72;
+    font-weight: 400;
+}
+
+/* ══════════════════════════════════════════════
+   KHỐI CÔ DÂU & CHÚ RỂ — thứ bậc thông tin rõ ràng
+   ══════════════════════════════════════════════ */
+
+/* Nhãn "Chú rể" / "Cô dâu" — chữ nhỏ in hoa phía trên tên */
+.nhan-vai-tro {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 400;
+    letter-spacing: 0.34em;
+    text-indent: 0.34em;
+    text-transform: uppercase;
+    color: #8a6d1f;
+    opacity: 0.9;
+}
+
+/* Dòng dẫn "Con trai của" / "Con gái của" — đứng ngay trên tên bố mẹ */
+.dan-thu-bac {
+    font-size: 0.82rem;
+    font-style: italic;
+    letter-spacing: 0.03em;
+    color: #8a6d1f;
+    opacity: 0.9;
+}
+
+/* Khối tên bố mẹ — có đường kẻ vàng phía trên */
+.khoi-phu-huynh {
+    display: block;
+    width: fit-content;
+    padding-top: 0.85rem;
+    border-top: 1px solid rgba(138, 109, 31, 0.26);
+    max-width: 22rem;
+    text-align: center;
+}
+
+.ten-phu-huynh {
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+/* Chế độ tối */
+[data-bs-theme="dark"] .nhan-vai-tro {
+    color: #c2a04a;
+}
+
+[data-bs-theme="dark"] .dan-thu-bac {
+    color: #c2a04a;
+}
+
+[data-bs-theme="dark"] .khoi-phu-huynh {
+    border-top-color: rgba(196, 163, 76, 0.26);
+}
+
+/* ══════════════════════════════════════════════
+   HAI TAB NHÔ RA CẠNH PHẢI
+   Mừng cưới & Lời chúc — kín đáo, khách tự tìm
+   ══════════════════════════════════════════════ */
+.cum-tab-phai {
+    position: fixed;
+    right: 0;
+    /* Đặt thấp hơn giữa màn hình để không đè lên album ảnh */
+    top: 70%;
+    z-index: 1035;
+    display: flex;
+    flex-direction: column;
+    gap: 0.5rem;
+    opacity: 0;
+    transform: translateX(0.75rem);
+    transition: opacity 0.6s ease, transform 0.6s ease;
+    pointer-events: none;
+}
+
+/* Chỉ hiện sau khi khách mở thiệp */
+.cum-tab-phai.hien {
+    opacity: 1;
+    transform: translateX(0);
+    pointer-events: auto;
+}
+
+.tab-phai {
+    display: flex;
+    align-items: center;
+    gap: 0.45rem;
+    padding: 0.55rem 0.75rem 0.55rem 0.85rem;
+    border: 1px solid rgba(138, 109, 31, 0.35);
+    border-right: none;
+    border-radius: 1.6rem 0 0 1.6rem;
+    background-color: rgba(255, 253, 249, 0.94);
+    backdrop-filter: blur(0.65rem);
+    -webkit-backdrop-filter: blur(0.65rem);
+    box-shadow: -3px 3px 14px rgba(76, 58, 12, 0.15);
+    color: #7d6220;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.76rem;
+    letter-spacing: 0.02em;
+    line-height: 1;
+    white-space: nowrap;
+    cursor: pointer;
+    transition: padding-right 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                background-color 0.32s ease,
+                box-shadow 0.32s ease;
+}
+
+.tab-phai i {
+    font-size: 0.82rem;
+    opacity: 0.92;
+}
+
+.tab-phai:active {
+    transform: translateX(1px);
+}
+
+@media (hover: hover) {
+    .tab-phai:hover {
+        padding-right: 1.1rem;
+        background-color: rgba(255, 250, 238, 0.99);
+        box-shadow: -4px 4px 18px rgba(76, 58, 12, 0.22);
+    }
+}
+
+/* Màn hình hẹp: thu gọn, chữ nhỏ hơn */
+@media (max-width: 400px) {
+    .tab-phai {
+        padding: 0.5rem 0.6rem 0.5rem 0.7rem;
+        font-size: 0.7rem;
+    }
+}
+
+/* ── Panel trượt ra ── */
+.panel-thiep {
+    max-width: 27rem;
+    width: 92vw;
+    background-color: var(--bs-body-bg);
+    border-left: 1px solid rgba(138, 109, 31, 0.3);
+}
+
+.panel-thiep .offcanvas-header {
+    border-bottom: 1px solid rgba(138, 109, 31, 0.22);
+    padding-bottom: 0.75rem !important;
+}
+
+.panel-thiep .offcanvas-body {
+    overflow-x: hidden;
+}
+
+/* Nội dung bên trong panel: bỏ padding thừa của container gốc */
+.panel-thiep .container {
+    padding-left: 0;
+    padding-right: 0;
+}
+
+.panel-thiep .mx-4 {
+    margin-left: 0 !important;
+    margin-right: 0 !important;
+}
+
+/* ── Chế độ tối ── */
+[data-bs-theme="dark"] .tab-phai {
+    background-color: rgba(30, 27, 22, 0.94);
+    border-color: rgba(196, 163, 76, 0.4);
+    color: #d4b158;
+    box-shadow: -3px 3px 14px rgba(0, 0, 0, 0.4);
+}
+
+[data-bs-theme="dark"] .panel-thiep {
+    border-left-color: rgba(196, 163, 76, 0.3);
+}
+
+[data-bs-theme="dark"] .panel-thiep .offcanvas-header {
+    border-bottom-color: rgba(196, 163, 76, 0.24);
+}
+
+@media (hover: hover) {
+    [data-bs-theme="dark"] .tab-phai:hover {
+        background-color: rgba(38, 34, 27, 0.99);
+    }
+}
+
+/* ══════════════════════════════════════════════
+   PANEL MỪNG CƯỚI — 2 thẻ Chú rể / Cô dâu
+   ══════════════════════════════════════════════ */
+.loi-ngo-mung {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    text-align: center;
+    opacity: 0.85;
+}
+
+.the-mung-cuoi {
+    text-align: center;
+    padding: 1.35rem 1rem;
+    margin-bottom: 1.1rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 252, 246, 0.7);
+    border: 1px solid rgba(138, 109, 31, 0.26);
+    box-shadow: 0 4px 16px rgba(76, 58, 12, 0.09);
+}
+
+.nhan-vai-mung {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.7rem;
+    font-weight: 500;
+    letter-spacing: 0.26em;
+    text-indent: 0.26em;
+    text-transform: uppercase;
+    color: #8a6d1f;
+}
+
+.ten-mung {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.75rem;
+    line-height: 1.2;
+    color: #7d6220;
+}
+
+/* Khung mã QR */
+.khung-qr {
+    width: 10.5rem;
+    height: 10.5rem;
+    padding: 0.6rem;
+    border-radius: 0.85rem;
+    background-color: #fff;
+    border: 1px solid rgba(138, 109, 31, 0.3);
+    box-shadow: 0 3px 12px rgba(76, 58, 12, 0.12);
+}
+
+.anh-qr {
+    width: 100%;
+    height: 100%;
+    object-fit: contain;
+    display: block;
+}
+
+.ten-ngan-hang {
+    font-size: 0.82rem;
+    letter-spacing: 0.03em;
+    opacity: 0.8;
+}
+
+/* Dòng số tài khoản + nút copy */
+.hang-stk {
+    display: inline-flex;
+    align-items: center;
+    gap: 0.55rem;
+    padding: 0.35rem 0.5rem 0.35rem 0.9rem;
+    border-radius: 2rem;
+    background-color: rgba(212, 177, 88, 0.13);
+    border: 1px solid rgba(138, 109, 31, 0.24);
+}
+
+.so-tk {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.95rem;
+    font-weight: 500;
+    letter-spacing: 0.06em;
+    font-variant-numeric: tabular-nums;
+    color: #6b5518;
+}
+
+.nut-copy {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 1.75rem;
+    height: 1.75rem;
+    border-radius: 50%;
+    border: 1px solid rgba(138, 109, 31, 0.3);
+    background-color: rgba(255, 255, 255, 0.85);
+    color: #8a6d1f;
+    font-size: 0.72rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease, transform 0.2s ease;
+}
+
+.nut-copy:active {
+    transform: scale(0.92);
+}
+
+@media (hover: hover) {
+    .nut-copy:hover {
+        background-color: #fff;
+        color: #6b5518;
+    }
+}
+
+.loi-cam-on-mung {
+    font-size: 0.84rem;
+    font-style: italic;
+    text-align: center;
+    opacity: 0.75;
+}
+
+/* ── Chế độ tối ── */
+[data-bs-theme="dark"] .the-mung-cuoi {
+    background-color: rgba(32, 29, 24, 0.5);
+    border-color: rgba(196, 163, 76, 0.28);
+}
+
+[data-bs-theme="dark"] .nhan-vai-mung,
+[data-bs-theme="dark"] .ten-mung,
+[data-bs-theme="dark"] .so-tk,
+[data-bs-theme="dark"] .nut-copy {
+    color: #d4b158;
+}
+
+[data-bs-theme="dark"] .hang-stk {
+    background-color: rgba(212, 177, 88, 0.1);
+    border-color: rgba(196, 163, 76, 0.3);
+}
+
+[data-bs-theme="dark"] .nut-copy {
+    background-color: rgba(255, 255, 255, 0.06);
+    border-color: rgba(196, 163, 76, 0.3);
+}
+
+/* ══════════════════════════════════════════════
+   LỜI CHÚC TỪ NGƯỜI THÂN
+   ══════════════════════════════════════════════ */
+.cum-loi-chuc {
+    max-width: 34rem;
+}
+
+.the-loi-chuc {
+    position: relative;
+    margin: 0 0 1.1rem;
+    padding: 2.1rem 1.5rem 1.6rem;
+    border-radius: 1rem;
+    background-color: rgba(255, 252, 246, 0.75);
+    border: 1px solid rgba(138, 109, 31, 0.22);
+    box-shadow: 0 4px 16px rgba(76, 58, 12, 0.08);
+    text-align: center;
+}
+
+.the-loi-chuc:last-child {
+    margin-bottom: 0;
+}
+
+/* Dấu ngoặc kép trang trí */
+.the-loi-chuc::before {
+    content: '\201C';
+    position: absolute;
+    top: 0.15rem;
+    left: 50%;
+    transform: translateX(-50%);
+    font-family: Georgia, 'Times New Roman', serif;
+    font-size: 3rem;
+    line-height: 1;
+    color: rgba(176, 141, 46, 0.32);
+}
+
+.the-loi-chuc blockquote {
+    margin: 0;
+    font-size: 0.94rem;
+    line-height: 1.8;
+    font-style: italic;
+    opacity: 0.92;
+}
+
+/* Nút mở panel viết lời chúc */
+.nut-gui-chuc {
+    display: inline-flex;
+    align-items: center;
+    padding: 0.6rem 1.5rem;
+    border-radius: 2rem;
+    border: 1px solid rgba(138, 109, 31, 0.4);
+    background-color: rgba(212, 177, 88, 0.12);
+    color: #7d6220;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.85rem;
+    letter-spacing: 0.02em;
+    cursor: pointer;
+    transition: background-color 0.3s ease, box-shadow 0.3s ease, transform 0.2s ease;
+}
+
+.nut-gui-chuc:active {
+    transform: scale(0.97);
+}
+
+@media (hover: hover) {
+    .nut-gui-chuc:hover {
+        background-color: rgba(212, 177, 88, 0.22);
+        box-shadow: 0 4px 14px rgba(76, 58, 12, 0.14);
+    }
+}
+
+/* ── Chế độ tối ── */
+[data-bs-theme="dark"] .the-loi-chuc {
+    background-color: rgba(32, 29, 24, 0.5);
+    border-color: rgba(196, 163, 76, 0.24);
+}
+
+[data-bs-theme="dark"] .the-loi-chuc::before {
+    color: rgba(212, 177, 88, 0.3);
+}
+
+[data-bs-theme="dark"] .nut-gui-chuc {
+    color: #d4b158;
+    background-color: rgba(212, 177, 88, 0.1);
+    border-color: rgba(196, 163, 76, 0.36);
+}
+
+/* ══════════════════════════════════════════════
+   FORM & THẺ LỜI CHÚC — tone champagne
+   ══════════════════════════════════════════════ */
+
+/* Ô nhập */
+#panel-luu-but .form-control,
+#panel-luu-but .form-select {
+    border-color: rgba(138, 109, 31, 0.3);
+    font-size: 0.9rem;
+}
+
+#panel-luu-but .form-control:focus,
+#panel-luu-but .form-select:focus {
+    border-color: rgba(138, 109, 31, 0.6);
+    box-shadow: 0 0 0 0.2rem rgba(212, 177, 88, 0.18);
+}
+
+#panel-luu-but .form-label {
+    font-size: 0.84rem;
+    color: #7d6220;
+    letter-spacing: 0.01em;
+}
+
+/* Nút gửi — thay xanh Bootstrap bằng champagne */
+#panel-luu-but .btn-primary {
+    background: linear-gradient(135deg, #8a6d1f, #b08d2e 55%, #8a6d1f);
+    border: none;
+    color: #fffdf7;
+    font-size: 0.88rem;
+    letter-spacing: 0.02em;
+    padding: 0.6rem 1rem;
+    box-shadow: 0 4px 14px rgba(76, 58, 12, 0.22);
+}
+
+#panel-luu-but .btn-primary:hover,
+#panel-luu-but .btn-primary:focus {
+    background: linear-gradient(135deg, #7d6220, #c2a04a 55%, #7d6220);
+    color: #fff;
+}
+
+#panel-luu-but .btn-primary:active {
+    transform: scale(0.985);
+}
+
+/* ── Thẻ lời chúc của khách ── */
+#comments .card,
+#comments > div > div {
+    border-color: rgba(138, 109, 31, 0.2) !important;
+}
+
+/* Tên người chúc */
+#comments .fw-bold {
+    color: #7d6220;
+    font-size: 0.92rem;
+}
+
+/* Ẩn dấu tích xanh của template */
+#comments .fa-circle-check,
+#comments .text-success {
+    display: none !important;
+}
+
+/* Nút thả tim & trả lời */
+#comments .btn {
+    font-size: 0.72rem;
+    border-color: rgba(138, 109, 31, 0.3);
+    color: #8a6d1f;
+}
+
+#comments .btn:hover {
+    background-color: rgba(212, 177, 88, 0.14);
+    color: #7d6220;
+}
+
+/* Phân trang */
+#pagination .btn.btn {
+    border-color: rgba(138, 109, 31, 0.3);
+    color: #8a6d1f;
+    font-size: 0.8rem;
+}
+
+#pagination .btn:hover {
+    background-color: rgba(212, 177, 88, 0.14);
+}
+
+/* ── Chế độ tối ── */
+[data-bs-theme="dark"] #panel-luu-but .form-label,
+[data-bs-theme="dark"] #comments strong,
+[data-bs-theme="dark"] #comments .fw-bold,
+[data-bs-theme="dark"] #comments .btn,
+[data-bs-theme="dark"] #pagination .btn {
+    color: #d4b158;
+}
+
+[data-bs-theme="dark"] #panel-luu-but .btn-primary {
+    color: #1c1a16;
+    background: linear-gradient(135deg, #b08d2e, #d4b158 55%, #b08d2e);
+}
+
+/* ══════════════════════════════════════════════
+   CHÂN THIỆP
+   ══════════════════════════════════════════════ */
+.chan-thiep {
+    padding: 0.5rem 0 1.75rem;
+}
+
+/* Hoa văn phân cách: đường kẻ + hình thoi ở giữa */
+.hoa-van-chan {
+    width: 7rem;
+    height: 1px;
+    background: linear-gradient(90deg,
+            transparent,
+            rgba(138, 109, 31, 0.42) 30%,
+            rgba(196, 163, 76, 0.7) 50%,
+            rgba(138, 109, 31, 0.42) 70%,
+            transparent);
+    position: relative;
+}
+
+.hoa-van-chan::after {
+    content: '';
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    width: 0.32rem;
+    height: 0.32rem;
+    background-color: #b08d2e;
+    transform: translate(-50%, -50%) rotate(45deg);
+}
+
+.ten-chan-thiep {
+    font-family: 'Dancing Script', cursive;
+    font-size: 1.85rem;
+    line-height: 1.25;
+    color: #7d6220;
+}
+
+.amp-chan {
+    opacity: 0.6;
+    margin: 0 0.15rem;
+}
+
+.ngay-chan-thiep {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.78rem;
+    letter-spacing: 0.3em;
+    text-indent: 0.3em;
+    color: #8a6d1f;
+    opacity: 0.85;
+}
+
+.dong-nhac {
+    font-size: 0.8rem;
+    line-height: 1.6;
+    opacity: 0.78;
+}
+
+.nghe-si {
+    display: block;
+    font-size: 0.72rem;
+    opacity: 0.8;
+    margin-top: 0.1rem;
+}
+
+.dong-thuc-hien {
+    font-size: 0.75rem;
+    opacity: 0.62;
+}
+
+.dong-thuc-hien .fa-heart {
+    color: #b08d2e;
+    font-size: 0.7rem;
+}
+
+/* ══════════════════════════════════════════════
+   THANH MENU DƯỚI — ẩn/hiện theo hướng cuộn
+   ══════════════════════════════════════════════ */
+#navbar-menu {
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1),
+                opacity 0.28s ease;
+    will-change: transform;
+}
+
+#navbar-menu.menu-an {
+    transform: translateY(105%);
+    opacity: 0;
+    pointer-events: none;
+}
+
+/* Chữ trong menu: không tràn dòng */
+#navbar-menu .nav-link span {
+    white-space: nowrap;
+    line-height: 1.2;
+    margin-top: 0.12rem;
+}
+
+#navbar-menu .nav-link {
+    padding-top: 0.5rem;
+    padding-bottom: 0.45rem;
+}
+
+#navbar-menu .nav-link i {
+    font-size: 0.95rem;
+}
+
+/* Mục đang xem: tô champagne */
+#navbar-menu .nav-link.active {
+    color: #8a6d1f;
+}
+
+/* ── Chế độ tối ── */
+[data-bs-theme="dark"] .ten-chan-thiep,
+[data-bs-theme="dark"] .ngay-chan-thiep,
+[data-bs-theme="dark"] .dong-thuc-hien .fa-heart,
+[data-bs-theme="dark"] #navbar-menu .nav-link.active {
+    color: #d4b158;
+}
+
+[data-bs-theme="dark"] .hoa-van-chan::after {
+    background-color: #c2a04a;
+}
+
+/* Giảm chuyển động nếu người dùng yêu cầu */
+@media (prefers-reduced-motion: reduce) {
+    #navbar-menu {
+        transition: none;
+    }
+}
+
+/* Nhóm nút nổi (sáng/tối, nhạc): theo menu khi menu ẩn đi */
+.nhom-nut-noi {
+    transition: transform 0.32s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+#navbar-menu.menu-an ~ .nhom-nut-noi,
+body:has(#navbar-menu.menu-an) .nhom-nut-noi {
+    transform: translateY(3.2rem);
+}
+
+/* Câu kết cuối thiệp */
+.cau-ket-thiep {
+    font-size: 0.95rem;
+    line-height: 1.85;
+    max-width: 30rem;
+    margin-left: auto;
+    margin-right: auto;
+    opacity: 0.9;
+}
+
+.cau-ket-nhan {
+    font-size: 1rem;
+    line-height: 1.75;
+    color: #7d6220;
+    margin-top: 0.5rem;
+}
+
+[data-bs-theme="dark"] .cau-ket-nhan {
+    color: #d4b158;
+}
+
+/* ══════════════════════════════════════════════
+   ALBUM ẢNH CƯỚI — lưới 4 ảnh đại diện
+   ══════════════════════════════════════════════ */
+.mota-album {
+    font-size: 0.85rem;
+    opacity: 0.7;
+    letter-spacing: 0.02em;
+}
+
+.luoi-dai-dien {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 0.7rem;
+    max-width: 34rem;
+}
+
+.o-anh-dd {
+    position: relative;
+    margin: 0;
+    aspect-ratio: 2 / 3;
+    overflow: hidden;
+    border-radius: 0.9rem;
+    box-shadow: 0 4px 16px rgba(76, 58, 12, 0.14);
+    cursor: pointer;
+    background-color: rgba(212, 177, 88, 0.07);
+}
+
+.anh-dd {
+    display: block;
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    transition: transform 0.5s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@media (hover: hover) {
+    .o-anh-dd:hover .anh-dd {
+        transform: scale(1.06);
+    }
+}
+
+/* Lớp phủ "+28 Xem tất cả" trên ô cuối */
+.lop-them {
+    position: absolute;
+    inset: 0;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    gap: 0.2rem;
+    background-color: rgba(40, 30, 8, 0.52);
+    backdrop-filter: blur(1px);
+    color: #fffdf7;
+    transition: background-color 0.3s ease;
+}
+
+.so-them {
+    font-family: 'Dancing Script', cursive;
+    font-size: 2.5rem;
+    line-height: 1;
+}
+
+.chu-them {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.72rem;
+    letter-spacing: 0.16em;
+    text-transform: uppercase;
+    opacity: 0.9;
+}
+
+@media (hover: hover) {
+    .o-anh-dd:hover .lop-them {
+        background-color: rgba(40, 30, 8, 0.62);
+    }
+}
+
+/* ══════════════════════════════════════════════
+   TRÌNH XEM ALBUM
+   ══════════════════════════════════════════════ */
+.xem-album {
+    position: fixed;
+    inset: 0;
+    z-index: 1060;
+    background-color: rgba(12, 10, 6, 0.96);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.xem-thanh-tren {
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    padding: 0.9rem 1.1rem;
+    z-index: 2;
+}
+
+.xem-so {
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.82rem;
+    letter-spacing: 0.08em;
+    color: #d4b158;
+    background-color: rgba(0, 0, 0, 0.4);
+    padding: 0.3rem 0.8rem;
+    border-radius: 2rem;
+}
+
+.xem-dong {
+    width: 2.4rem;
+    height: 2.4rem;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 177, 88, 0.35);
+    background-color: rgba(0, 0, 0, 0.4);
+    color: #d4b158;
+    font-size: 1rem;
+    cursor: pointer;
+    transition: background-color 0.25s ease;
+}
+
+.xem-dong:hover {
+    background-color: rgba(212, 177, 88, 0.18);
+}
+
+.xem-khung {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    width: 100%;
+    height: 100%;
+    padding: 3.5rem 0.8rem 6.5rem;
+}
+
+.xem-anh {
+    max-width: 100%;
+    max-height: 100%;
+    object-fit: contain;
+    border-radius: 0.5rem;
+    box-shadow: 0 10px 40px rgba(0, 0, 0, 0.5);
+}
+
+/* Mũi tên chuyển ảnh */
+.xem-mui-ten {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
+    width: 2.8rem;
+    height: 2.8rem;
+    border-radius: 50%;
+    border: 1px solid rgba(212, 177, 88, 0.3);
+    background-color: rgba(0, 0, 0, 0.45);
+    color: #d4b158;
+    font-size: 1rem;
+    cursor: pointer;
+    z-index: 2;
+    transition: background-color 0.25s ease;
+}
+
+.xem-truoc {
+    left: 0.7rem;
+}
+
+.xem-sau {
+    right: 0.7rem;
+}
+
+.xem-mui-ten:hover {
+    background-color: rgba(212, 177, 88, 0.2);
+}
+
+/* Dải ảnh nhỏ phía dưới */
+.xem-dai-nho {
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    right: 0;
+    display: flex;
+    gap: 0.4rem;
+    padding: 0.8rem 1rem 1.1rem;
+    overflow-x: auto;
+    scrollbar-width: none;
+    z-index: 2;
+}
+
+.xem-dai-nho::-webkit-scrollbar {
+    display: none;
+}
+
+.o-nho {
+    flex: 0 0 auto;
+    width: 3rem;
+    height: 4rem;
+    padding: 0;
+    border: 2px solid transparent;
+    border-radius: 0.4rem;
+    overflow: hidden;
+    background: none;
+    cursor: pointer;
+    opacity: 0.5;
+    transition: opacity 0.25s ease, border-color 0.25s ease;
+}
+
+.o-nho img {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    display: block;
+}
+
+.o-nho.dang-xem {
+    opacity: 1;
+    border-color: #d4b158;
+}
+
+@media (hover: hover) {
+    .o-nho:hover {
+        opacity: 0.85;
+    }
+}
+
+/* Màn hình nhỏ: mũi tên gọn hơn */
+@media (max-width: 480px) {
+    .xem-mui-ten {
+        width: 2.3rem;
+        height: 2.3rem;
+        font-size: 0.85rem;
+    }
+
+    .o-nho {
+        width: 2.5rem;
+        height: 3.4rem;
+    }
+}
+
+/* ══════════════════════════════════════════════
+   THÔNG BÁO — trượt lên từ đáy, thay window.alert
+   ══════════════════════════════════════════════ */
+.thong-bao {
+    position: fixed;
+    left: 50%;
+    bottom: 5.5rem;
+    z-index: 1080;
+    transform: translate(-50%, 1.2rem);
+    max-width: min(22rem, calc(100vw - 2rem));
+    padding: 0.75rem 1.25rem;
+    border-radius: 2rem;
+    font-family: 'Be Vietnam Pro', sans-serif;
+    font-size: 0.85rem;
+    line-height: 1.5;
+    text-align: center;
+    color: #fffdf7;
+    background-color: rgba(40, 32, 12, 0.95);
+    backdrop-filter: blur(0.5rem);
+    box-shadow: 0 6px 24px rgba(0, 0, 0, 0.3);
+    opacity: 0;
+    transition: opacity 0.3s ease, transform 0.3s cubic-bezier(0.22, 1, 0.36, 1);
+    pointer-events: none;
+}
+
+.thong-bao.hien {
+    opacity: 1;
+    transform: translate(-50%, 0);
+}
+
+.thong-bao-thanh-cong {
+    background-color: rgba(30, 70, 40, 0.95);
+}
+
+.thong-bao-loi {
+    background-color: rgba(110, 35, 35, 0.95);
+}
+
+.thong-bao-canh-bao {
+    background-color: rgba(125, 98, 32, 0.96);
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .thong-bao {
+        transition: opacity 0.2s ease;
+    }
+}

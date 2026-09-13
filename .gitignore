@@ -1,0 +1,10 @@
+node_modules
+dist
+public
+.vercel
+.env
+.env.local
+*.bak
+*.log
+.DS_Store
+.omc
